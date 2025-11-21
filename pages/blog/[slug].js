@@ -175,7 +175,7 @@ function BlogDetailPage({
 
   const siteUrl =
   process.env.NODE_ENV === "production"
-    ? "https://boganto.com/blog"
+    ? "https://boganto.com"
     : "http://localhost:5173";
 
 // Share URL (browser + server safe)
@@ -320,7 +320,7 @@ const shareTitle = blog ? blog.title : "";
           blog.tags.map((tag, index) => (
             <meta key={index} property="article:tag" content={tag.trim()} />
           ))}
-        <link rel="canonical" href={`https://boganto.com/blog/${blog.slug}`} />
+        <link rel="canonical" href={`https://boganto.com ${blog.slug}`} />
         {blog.featured_image && (
           <>
             <link

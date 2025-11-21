@@ -2,7 +2,7 @@
 const isProd = process.env.NODE_ENV === "production";
 
 module.exports = {
-  siteUrl: isProd ? "https://boganto.com/blog" : "http://localhost:3000",
+  siteUrl: isProd ? "https://boganto.com" : "http://localhost:3000",
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   robotsTxtOptions: {

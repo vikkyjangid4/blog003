@@ -12,6 +12,14 @@ dist
 dist-ssr
 *.local
 
+# Environment files (sensitive data)
+.env
+.env.local
+.env.*.local
+.env.production
+api/.env.production
+outer_api/.env.production
+
 # Next.js
 .next/
 out/

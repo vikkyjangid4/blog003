@@ -112,9 +112,7 @@ export const blogAPI = {
   
   // Delete blog (admin)
   deleteBlog: (id) => {
-    return api.delete('/api/admin/blogs', {
-      params: { id: id }
-    })
+    return api.delete(`/api/admin/blogs?id=${id}`)
   }
 }
 
@@ -155,9 +153,7 @@ export const bannerAPI = {
   },
   
   deleteBanner: (id) => {
-    return api.delete('/api/admin/banners', {
-      params: { id: id }
-    })
+    return api.delete(`/api/admin/banners?id=${id}`)
   }
 }
 
