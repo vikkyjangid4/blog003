@@ -2,8 +2,8 @@
 -- Comprehensive full-stack blog website with categories, blogs, banners, and related books
 -- Production-ready schema with all enhancements consolidated
 
-CREATE DATABASE IF NOT EXISTS boganto_blog;
-USE boganto_blog;
+CREATE DATABASE IF NOT EXISTS blog;
+USE blog;
 
 -- ============================================
 -- 1. ADMIN AUTHENTICATION
