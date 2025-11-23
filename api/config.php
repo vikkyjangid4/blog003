@@ -37,11 +37,11 @@ $allowed_origins = [
     'https://boganto.com',
 ];
 
-$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+$origin = $_SERVER['HTTP_ORIGIN'] ?? 'http://localhost:3000';
 
 $allowed_origin = in_array($origin, $allowed_origins)
     ? $origin
-    : 'https://boganto.com';   // fallback production origin
+    : 'http://localhost:3000';   // fallback production origin
 
 
 header("Access-Control-Allow-Origin: $allowed_origin");
