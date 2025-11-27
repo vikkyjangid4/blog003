@@ -69,7 +69,7 @@ const BlogCard = ({ blog, featured = false }) => {
         <h3 className={`font-bold text-navy-800 mb-3 leading-tight group-hover:text-primary-600 transition-colors duration-300 line-clamp-2 ${
           featured ? 'text-xl' : 'text-lg'
         }`}>
-          <Link href={`/blog/${blog.slug}`}>
+          <Link href={`/${blog.slug}`}>
             {blog.title}
           </Link>
         </h3>
@@ -81,7 +81,7 @@ const BlogCard = ({ blog, featured = false }) => {
 
         {/* Read More Link */}
         <Link
-          href={`/blog/${blog.slug}`}
+          href={`/${blog.slug}`}
           className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold group/link transition-colors duration-200"
         >
           {featured ? 'Read Article' : 'Continue Reading'}

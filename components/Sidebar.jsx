@@ -75,7 +75,7 @@ const Sidebar = () => {
         </div>
         <div className="flex-1 min-w-0">
           <h4 className="text-sm font-semibold text-navy-800 leading-tight mb-1 hover:text-primary-600 transition-colors duration-200">
-            <Link href={`/blog/${blog.slug}`} className="line-clamp-2">
+            <Link href={`/${blog.slug}`} className="line-clamp-2">
               {blog.title}
             </Link>
           </h4>

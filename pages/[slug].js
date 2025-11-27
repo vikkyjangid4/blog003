@@ -19,10 +19,10 @@ import {
   ThumbsUp,
   ThumbsDown,
 } from "lucide-react";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import { blogAPI, utils } from "../../utils/api";
-import { DEFAULT_IMAGES } from "../../utils/constants";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import { blogAPI, utils } from "../utils/api";
+import { DEFAULT_IMAGES } from "../utils/constants";
 
 // Use SSR for blog posts to avoid build issues
 export async function getServerSideProps({ params }) {
@@ -179,7 +179,7 @@ function BlogDetailPage({
 const shareUrl =
   typeof window !== "undefined"
     ? window.location.href
-    : `${siteUrl}/blog/${slug}`;
+    : `${siteUrl}/${slug}`;
 
 // Share Title
 const shareTitle = blog ? blog.title : "";
@@ -188,7 +188,7 @@ const shareTitle = blog ? blog.title : "";
     // Use client-side URL when available, fallback to constructed URL for SSR
     return typeof window !== "undefined"
       ? window.location.href
-      : `${siteUrl}/blog/${slug}`;
+      : `${siteUrl}/${slug}`;
   };
 
   const shareLinks = {
@@ -706,7 +706,7 @@ const shareTitle = blog ? blog.title : "";
                     className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
                   >
                     <Link
-                      href={`/blog/${article.slug}`}
+                      href={`/${article.slug}`}
                       onClick={(e) => {
                         e.preventDefault();
                         setLoading(true);
@@ -715,7 +715,7 @@ const shareTitle = blog ? blog.title : "";
                         setRelatedArticles([]);
                         // Ensure no double /blog/blog/ in URL
                         const cleanSlug = article.slug.replace(/^\/blog\//, '');
-                        router.push(`/blog/${cleanSlug}`);
+                        router.push(`/${cleanSlug}`);
                       }}
                     >
                       <div className="aspect-video relative">

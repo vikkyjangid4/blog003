@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import Image from 'next/image'
 import { useAuth } from '../../contexts/AuthContext'
 import { blogAPI, categoryAPI, bannerAPI } from '../../utils/api'
 import axios from 'axios'
@@ -11,7 +12,6 @@ import {
   Settings, 
   Users, 
   Tags,
-  Image,
   LogOut,
   Plus,
   Edit,
@@ -722,7 +722,7 @@ const AdminPanel = () => {
                                     <td className="px-6 py-4">
                                       <div className="flex space-x-2">
                                         <button
-                                          onClick={() => window.open(`/blog/${blog.slug}`, '_blank')}
+                                          onClick={() => window.open(`/${blog.slug}`, '_blank')}
                                           className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition"
                                         >
                                           <Eye className="w-4 h-4" />
@@ -896,7 +896,8 @@ const AdminPanel = () => {
                                 <div className="text-xs text-slate-500 mb-1">Current Image:</div>
                                 <Image
                                   src={formData.featured_image ? URL.createObjectURL(formData.featured_image) : editingBlog?.featured_image}
-                                  fill
+                                  width={400}
+                                  height={128}
                                   alt="Featured image preview"
                                   className="w-full h-32 object-cover rounded-lg border"
                                   onError={(e) => {
@@ -925,6 +926,8 @@ const AdminPanel = () => {
                                 <div className="text-xs text-slate-500 mb-1">Current Image:</div>
                                 <Image
                                   src={formData.featured_image_2 ? URL.createObjectURL(formData.featured_image_2) : editingBlog?.featured_image_2}
+                                  width={400}
+                                  height={128}
                                   alt="Second featured image preview"
                                   className="w-full h-32 object-cover rounded-lg border"
                                   onError={(e) => {
@@ -1076,6 +1079,8 @@ const AdminPanel = () => {
                                 <div className="relative inline-block">
                                   <Image
                                     src={book.cover_image ? URL.createObjectURL(book.cover_image) : book.cover_image_url}
+                                    width={96}
+                                    height={128}
                                     alt="Book cover preview"
                                     className="w-24 h-32 object-cover rounded border border-gray-300"
                                     onError={(e) => {
@@ -1267,6 +1272,8 @@ const AdminPanel = () => {
                               <div className="aspect-video mb-4 bg-gray-100 rounded-lg overflow-hidden">
                                 <Image
                                   src={banner.image_url}
+                                  width={400}
+                                  height={225}
                                   alt={banner.title}
                                   className="w-full h-full object-cover"
                                   onError={(e) => {
@@ -1321,7 +1328,7 @@ const AdminPanel = () => {
                                   </button>
                                   {banner.blog_slug && (
                                     <button
-                                      onClick={() => window.open(`/blog/${banner.blog_slug}`, '_blank')}
+                                      onClick={() => window.open(`/${banner.blog_slug}`, '_blank')}
                                       className="flex items-center space-x-1 px-3 py-1 text-sm text-green-600 hover:bg-green-50 rounded"
                                     >
                                       <Eye className="w-3 h-3" />
@@ -1448,6 +1455,8 @@ const AdminPanel = () => {
                             <div className="aspect-video w-full max-w-md bg-gray-100 rounded-lg overflow-hidden">
                               <Image
                                 src={bannerFormData.banner_image ? URL.createObjectURL(bannerFormData.banner_image) : editingBanner?.image_url}
+                                width={600}
+                                height={337}
                                 alt="Banner preview"
                                 className="w-full h-full object-cover"
                                 onError={(e) => {
