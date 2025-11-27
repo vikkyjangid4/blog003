@@ -405,10 +405,12 @@ const shareTitle = blog ? blog.title : "";
             // Dual images - 2-column grid layout (stacked on mobile)
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-lg">
+                <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-lg relative">
                   <Image
                     src={utils.getImageUrl(blog.featured_image)}
                     alt={blog.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     onError={(e) => {
                       e.target.src = DEFAULT_IMAGES.ARTICLE_THUMBNAIL;
@@ -416,9 +418,11 @@ const shareTitle = blog ? blog.title : "";
                     }}
                   />
                 </div>
-                <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-lg">
+                <div className="aspect-[4/3] overflow-hidden rounded-xl shadow-lg relative">
                   <Image
                     src={utils.getImageUrl(blog.featured_image_2)}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     alt={`${blog.title} - Image 2`}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                     onError={(e) => {
@@ -431,13 +435,15 @@ const shareTitle = blog ? blog.title : "";
             </div>
           ) : blog.featured_image ? (
             // Single image - large centered display
-            <div className="max-w-3xl mx-auto rounded-xl overflow-hidden shadow-2xl h-[400px]">
+            <div className="max-w-3xl mx-auto rounded-xl overflow-hidden shadow-2xl h-[400px] relative">
               <Image
                 src={
                   utils.getImageUrl(blog.featured_image) ||
                   utils.getImageUrl(DEFAULT_IMAGES.ARTICLE_THUMBNAIL)
                 }
                 alt={blog.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 768px"
                 className="w-full h-full object-cover"
                 onError={(e) => {
                   e.target.src = DEFAULT_IMAGES.ARTICLE_THUMBNAIL;
@@ -615,6 +621,8 @@ const shareTitle = blog ? blog.title : "";
                               <Image
                                 src={utils.getImageUrl(book.cover_image)}
                                 alt={book.title}
+                                fill
+                                sizes="48px"
                                 className="w-full h-full object-cover"
                                 onError={(e) => {
                                   e.target.style.display = "none";
@@ -717,6 +725,8 @@ const shareTitle = blog ? blog.title : "";
                             DEFAULT_IMAGES.ARTICLE_THUMBNAIL
                           }
                           alt={article.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           className="w-full h-full object-cover"
                           onError={(e) => {
                             e.target.src = DEFAULT_IMAGES.ARTICLE_THUMBNAIL;

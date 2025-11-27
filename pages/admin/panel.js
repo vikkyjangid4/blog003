@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import Image from 'next/image'
 import { useAuth } from '../../contexts/AuthContext'
 import { blogAPI, categoryAPI, bannerAPI } from '../../utils/api'
 import axios from 'axios'
@@ -897,6 +896,7 @@ const AdminPanel = () => {
                                 <div className="text-xs text-slate-500 mb-1">Current Image:</div>
                                 <Image
                                   src={formData.featured_image ? URL.createObjectURL(formData.featured_image) : editingBlog?.featured_image}
+                                  fill
                                   alt="Featured image preview"
                                   className="w-full h-32 object-cover rounded-lg border"
                                   onError={(e) => {

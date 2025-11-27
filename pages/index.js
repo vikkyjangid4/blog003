@@ -188,10 +188,12 @@ const HomePage = ({ initialData, banners: initialBanners }) => {
                             key={blog.id}
                             className="flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200"
                           >
-                            <div className="flex-shrink-0">
+                            <div className="flex-shrink-0 relative w-16 h-16">
                               {blog.featured_image ? (
                                 <Image
                                   src={utils.getImageUrl(blog.featured_image)}
+                                  fill
+                                  sizes="64px"
                                   alt={blog.title}
                                   className="w-16 h-16 object-cover rounded-lg"
                                   onError={(e) => {
@@ -286,6 +288,8 @@ const HomePage = ({ initialData, banners: initialBanners }) => {
                                     {blog.featured_image ? (
                                       <Image
                                         src={utils.getImageUrl(blog.featured_image)}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         alt={blog.title}
                                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                         onError={(e) => {
@@ -492,6 +496,7 @@ const HomePage = ({ initialData, banners: initialBanners }) => {
                                   {blog.featured_image ? (
                                     <Image
                                       src={utils.getImageUrl(blog.featured_image)}
+                                      fill
                                       alt={blog.title}
                                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                       onError={(e) => {

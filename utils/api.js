@@ -143,22 +143,34 @@ export const bannerAPI = {
 export const utils = {
   // Get full image URL using dynamic BASE_URL
   getImageUrl: (imagePath) => {
-    const baseUrl = process.env.NODE_ENV === 'production' ? BASE_URL : 'http://localhost:5173';
-
-    console.log('BASE_URL in getImageUrl:', baseUrl);
-    
     if (!imagePath) return '';
     if (imagePath.startsWith('http')) return imagePath;
     
     // Remove leading slash if present
     const cleanPath = imagePath.startsWith('/') ? imagePath.slice(1) : imagePath;
     
-    // If already starts with uploads/, just prepend BASE_URL
+    // In production, always use absolute path to /uploads/ at root domain
+    if (process.env.NODE_ENV === 'production') {
+      // Extract just the filename from any path
+      // This removes any /blog/ or other prefixes that might have been added
+      const pathParts = cleanPath.split('/');
+      
+      // If the path is already just 'uploads/filename', use it as-is
+      if (cleanPath.startsWith('uploads/')) {
+        return `/uploads/${cleanPath.substring('uploads/'.length)}`;
+      }
+      
+      // Otherwise, prepend /uploads/
+      return `/uploads/${cleanPath}`;
+    }
+    
+    // In development, use BASE_URL if available
+    const baseUrl = BASE_URL || 'http://localhost:5173';
+    
     if (cleanPath.startsWith('uploads/')) {
       return `${baseUrl}/${cleanPath}`;
     }
     
-    // Otherwise prepend uploads/
     return `${baseUrl}/uploads/${cleanPath}`;
   },
 
