@@ -440,10 +440,10 @@ const shareTitle = blog ? blog.title : "";
         </section>
 
         {/* Article Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <div className="max-w-9xl mx-auto px-4 sm:px-3 lg:px-2 py-12">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
             {/* Main Content */}
-            <article className="lg:col-span-8 order-1">
+            <article className="lg:col-span-9 order-1">
               <div className="bg-white rounded-xl shadow-lg p-6 lg:p-8">
                 {/* Table of Contents */}
                 {tableOfContents.length > 0 && (
@@ -573,7 +573,7 @@ const shareTitle = blog ? blog.title : "";
             </article>
 
             {/* Article Sidebar - Related Books */}
-            <aside className="lg:col-span-4 order-2">
+            <aside className="lg:col-span-3 order-2">
               <div className="sticky top-24">
                 <div className="bg-white rounded-xl shadow-lg p-6">
                   <h4 className="text-lg font-semibold text-gray-900 mb-6">

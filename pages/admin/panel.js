@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
+import Image from 'next/image'
 import { useAuth } from '../../contexts/AuthContext'
-import { blogAPI, categoryAPI, bannerAPI } from '../../utils/api'
+import { blogAPI, categoryAPI, bannerAPI, utils } from '../../utils/api'
 import axios from 'axios'
 import { 
   Menu, 
@@ -11,7 +12,7 @@ import {
   Settings, 
   Users, 
   Tags,
-  Image,
+  Image as ImageIcon,
   LogOut,
   Plus,
   Edit,
@@ -434,9 +435,9 @@ const AdminPanel = () => {
   const sidebarItems = [
     { id: 'dashboard', label: 'Dashboard', icon: Home },
     { id: 'blogs', label: 'Blog Management', icon: FileText },
-    { id: 'banners', label: 'Hero Banners', icon: Image },
+    { id: 'banners', label: 'Hero Banners', icon: ImageIcon },
     { id: 'categories', label: 'Categories', icon: Tags },
-    { id: 'media', label: 'Media Library', icon: Image },
+    { id: 'media', label: 'Media Library', icon: ImageIcon },
     { id: 'users', label: 'User Management', icon: Users },
     { id: 'settings', label: 'Settings', icon: Settings }
   ]
@@ -896,7 +897,7 @@ const AdminPanel = () => {
                               <div className="mt-2">
                                 <div className="text-xs text-slate-500 mb-1">Current Image:</div>
                                 <Image
-                                  src={formData.featured_image ? URL.createObjectURL(formData.featured_image) : editingBlog?.featured_image}
+                                  src={formData.featured_image ? URL.createObjectURL(formData.featured_image) : utils.getImageUrl(editingBlog?.featured_image)}
                                   width={400}
                                   height={128}
                                   alt="Featured image preview"
@@ -926,7 +927,7 @@ const AdminPanel = () => {
                               <div className="mt-2">
                                 <div className="text-xs text-slate-500 mb-1">Current Image:</div>
                                 <Image
-                                  src={formData.featured_image_2 ? URL.createObjectURL(formData.featured_image_2) : editingBlog?.featured_image_2}
+                                  src={formData.featured_image_2 ? URL.createObjectURL(formData.featured_image_2) : utils.getImageUrl(editingBlog?.featured_image_2)}
                                   width={400}
                                   height={128}
                                   alt="Second featured image preview"
@@ -1079,7 +1080,7 @@ const AdminPanel = () => {
                                 </label>
                                 <div className="relative inline-block">
                                   <Image
-                                    src={book.cover_image ? URL.createObjectURL(book.cover_image) : book.cover_image_url}
+                                    src={book.cover_image ? URL.createObjectURL(book.cover_image) : utils.getImageUrl(book.cover_image_url)}
                                     width={96}
                                     height={128}
                                     alt="Book cover preview"
@@ -1215,7 +1216,7 @@ const AdminPanel = () => {
                       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
                         <div className="flex items-center space-x-4">
                           <div className="bg-orange-100 p-2 rounded-lg">
-                            <Image className="w-5 h-5 text-orange-600" />
+                            <ImageIcon className="w-5 h-5 text-orange-600" />
                           </div>
                           <div>
                             <h3 className="font-medium text-slate-800">Hero Banner Management</h3>
@@ -1254,7 +1255,7 @@ const AdminPanel = () => {
                         </div>
                       ) : banners.length === 0 ? (
                         <div className="p-8 text-center">
-                          <Image className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                          <ImageIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                           <h3 className="text-lg font-medium text-slate-800 mb-2">No Banners Yet</h3>
                           <p className="text-slate-600 mb-4">Create your first hero banner to showcase featured content on the homepage.</p>
                           <button
@@ -1272,7 +1273,7 @@ const AdminPanel = () => {
                               {/* Banner Image */}
                               <div className="aspect-video mb-4 bg-gray-100 rounded-lg overflow-hidden">
                                 <Image
-                                  src={banner.image_url}
+                                  src={utils.getImageUrl(banner.image_url)}
                                   width={400}
                                   height={225}
                                   alt={banner.title}
@@ -1455,7 +1456,7 @@ const AdminPanel = () => {
                             <div className="text-xs text-slate-500 mb-2">Preview:</div>
                             <div className="aspect-video w-full max-w-md bg-gray-100 rounded-lg overflow-hidden">
                               <Image
-                                src={bannerFormData.banner_image ? URL.createObjectURL(bannerFormData.banner_image) : editingBanner?.image_url}
+                                src={bannerFormData.banner_image ? URL.createObjectURL(bannerFormData.banner_image) : utils.getImageUrl(editingBanner?.image_url)}
                                 width={600}
                                 height={337}
                                 alt="Banner preview"

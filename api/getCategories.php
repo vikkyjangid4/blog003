@@ -27,7 +27,7 @@ function getAllCategories($db) {
                   FROM categories c 
                   LEFT JOIN blogs b ON c.id = b.category_id AND b.status = 'published'
                   GROUP BY c.id 
-                  ORDER BY c.name ASC";
+                  ORDER BY blog_count DESC, c.name ASC";
         
         if ($limit) {
             $query .= " LIMIT :limit";

@@ -564,7 +564,7 @@ const HomePage = ({ initialData, banners: initialBanners }) => {
                                     href={`/${blog.slug}`}
                                     className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold text-sm group/link transition-colors duration-200"
                                   >
-                                    Continue Reading
+                                    Read Article
                                     <svg
                                       className="w-3.5 h-3.5 ml-1.5 transform group-hover/link:translate-x-0.5 transition-transform duration-200"
                                       fill="none"
