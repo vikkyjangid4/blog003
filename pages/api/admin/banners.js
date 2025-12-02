@@ -1,4 +1,4 @@
-// API proxy for admin blogs with proper cookie forwarding and form handling
+// API proxy for admin banners with proper cookie forwarding and form handling
 import axios from 'axios'
 import formidable from 'formidable'
 import FormData from 'form-data'
@@ -52,7 +52,7 @@ export default async function handler(req, res) {
     }
     
     // Build URL with query parameters
-    let url = `${BACKEND_URL}/api/admin/blogs`
+    let url = `${BACKEND_URL}/api/admin/banners`
     if (req.url?.includes('?')) {
       url += '?' + req.url.split('?')[1]
     }
